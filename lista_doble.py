@@ -17,20 +17,20 @@ class lista_doble:
       return
     actual = self.primero 
     print("Nombre del cine:", actual.registro.nombre, 
-            "| Numero: ", actual.registro.numero, 
-            "| Asientos: ", actual.registro.asientos)
+            "| Numero de sala: ", actual.registro.numero, 
+            "| Asientos disponibles: ", actual.registro.asientos)
     
     while actual.siguiente:
       actual = actual.siguiente
       print("Nombre del cine:", actual.registro.nombre, 
-            "| Numero: ", actual.registro.numero, 
-            "| Asientos: ", actual.registro.asientos,)
+            "| Numero de sala: ", actual.registro.numero, 
+            "| Asientos disponibles: ", actual.registro.asientos,)
     
       
-  def eliminar(self, nombre, numero, asientos):
+  def eliminar(self,asientos):
     actual = self.primero
     while actual:
-        if actual.registro.nombre == nombre and actual.registro.numero == numero and actual.receta.asientos == asientos:
+        if actual.registro.asientos == asientos:
             if actual.anterior:
                 if actual.siguiente:
                     actual.anterior.siguiente = actual.siguiente

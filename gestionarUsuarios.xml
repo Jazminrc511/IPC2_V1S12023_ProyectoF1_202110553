@@ -9,22 +9,6 @@
   </usuario>
   <usuario>
     <rol>administrador</rol>
-    <nombre>Jane</nombre>
-    <apellido>Smith</apellido>
-    <telefono>987654321</telefono>
-    <correo>jane.smith@example.com</correo>
-    <contrasena>password456</contrasena>
-  </usuario>
-  <usuario>
-    <rol>administrador</rol>
-    <nombre>saul</nombre>
-    <apellido>prez</apellido>
-    <telefono>5947365</telefono>
-    <correo>saul@gmail.com</correo>
-    <contrasena>123</contrasena>
-  </usuario>
-  <usuario>
-    <rol>administrador</rol>
     <nombre>saul</nombre>
     <apellido>perez</apellido>
     <telefono>1562</telefono>
@@ -39,8 +23,28 @@
     <correo>jack@gmail.com</correo>
     <contrasena>12</contrasena>
   </usuario>
-<usuario><rol>administrador</rol><nombre>Jazmin</nombre><apellido>Rodriguez</apellido><telefono>59479135</telefono><correo>jazmin@gmail.com</correo><contrasena>arbol</contrasena></usuario>
-<usuario><rol>administrador</rol><nombre>Javier</nombre><apellido>Sanchez</apellido><telefono>59135412</telefono><correo>javier@gmail.com</correo><contrasena>carro</contrasena></usuario>
-<usuario><rol>cliente</rol><nombre>Flor</nombre><apellido>Perez</apellido><telefono>56231489</telefono><correo>flor123@gmail.com</correo><contrasena>perro</contrasena></usuario>
-<usuario><rol>cliente</rol><nombre>Sebastian</nombre><apellido>Hernandez</apellido><telefono>48236957</telefono><correo>sebas@gmail.com</correo><contrasena>print</contrasena></usuario>
+  <usuario>
+    <rol>administrador</rol>
+    <nombre>Jazmin</nombre>
+    <apellido>Rodriguez</apellido>
+    <telefono>59479135</telefono>
+    <correo>jazmin@gmail.com</correo>
+    <contrasena>arbol</contrasena>
+  </usuario>
+  <usuario>
+    <rol>administrador</rol>
+    <nombre>Javier</nombre>
+    <apellido>Sanchez</apellido>
+    <telefono>59135412</telefono>
+    <correo>javier@gmail.com</correo>
+    <contrasena>carro</contrasena>
+  </usuario>
+  <usuario>
+    <rol>cliente</rol>
+    <nombre>Sebastian</nombre>
+    <apellido>Hernandez</apellido>
+    <telefono>48236957</telefono>
+    <correo>sebas@gmail.com</correo>
+    <contrasena>print</contrasena>
+  </usuario>
 </usuarios>

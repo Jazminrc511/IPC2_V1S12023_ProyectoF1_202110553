@@ -58,6 +58,7 @@ class Menu:
 
     def menuAdmin(self):
         print("\n--------------------------------------------------------------------------------------")
+        print("Menú Administrador")
         print("Que desea realizar")
         print("1. Gestionar Usuarios")
         print("2. Gestionar Categorías y películas")
@@ -81,7 +82,8 @@ class Menu:
 
     def menuClientes(self):
         print("\n--------------------------------------------------------------------------------------")
-        print("\n1. Ver Listado de películas")
+        print("Menú Administrador")
+        print("1. Ver Listado de películas")
         print("2. Listado de películas favoritas")
         print("3. Comprar Boletos")
         print("4. Historial de boletos comprados")
@@ -117,6 +119,7 @@ class Menu:
 
     def gestionarUsuarios(self):
         print("\n--------------------------------------------------------------------------------------")
+        print("Gestionar Usuarios")
         print("Que desea realizar")
         print("1. Crear")
         print("2. Leer")
@@ -131,8 +134,9 @@ class Menu:
         elif opcion == "2":
             self.lectu.lecturaUsuarios()
             self.gestionarUsuarios()
-        elif opcion == "3":
-            pass
+        elif opcion == "4":
+            self.lectu.eliminarUsuario()
+            self.gestionarUsuarios()
         elif opcion == "5":
             self.menuAdmin()            
         else:
@@ -140,6 +144,7 @@ class Menu:
 
     def gestionarPeliculas(self):
         print("\n--------------------------------------------------------------------------------------")
+        print("Menú Gestionar Peliculas")
         print("Que desea realizar")
         print("1. Crear")
         print("2. Leer")
@@ -153,8 +158,9 @@ class Menu:
         elif opcion == "2":
             self.lectu.lecturaPeliculas()
             self.gestionarPeliculas()
-        elif opcion == "3":
-            pass
+        elif opcion == "4":
+            self.lectu.eliminarPelicula()
+            self.gestionarPeliculas()
         elif opcion == "5":
             self.menuAdmin()            
         else:
@@ -162,6 +168,7 @@ class Menu:
 
     def gestionarSalas(self):
         print("\n--------------------------------------------------------------------------------------")
+        print("Gestionar Salas")
         print("Que desea realizar")
         print("1. Crear")
         print("2. Leer")
@@ -171,14 +178,18 @@ class Menu:
         opcion = input("Selecciona una opción (1-5): ")
         if opcion == "1":
             self.lectu.agregarCine()
+            self.gestionarSalas()
         elif opcion == "2":
             self.lectu.lecturaCines()
-        elif opcion == "3":
-            pass
+            self.gestionarSalas()
+        elif opcion == "4":
+            self.lectu.eliminarSalas()
+            self.gestionarSalas()
         elif opcion == "5":
             self.menuAdmin()            
         else:
             print("Opción inválida. Por favor, selecciona una opción válida.")
+            self.gestionarSalas()
 
     def imprimir(self):
         print("Escriba los datos de pelicula que desea ver y sus datos personales para su facturación")
@@ -236,6 +247,7 @@ class Menu:
         fecha = input("Escriba la fecha que desea ver la película (Año-Mes-Día): ")
         hora = input("Hora de la función: ")
         boletos = int(input("Numero de boletos que desea comprar: "))
+        self.lectu.imprimirSalas()
         sala = input("Sala: ")
         asientos = input("Asientos: ")
         print("\nDatos de facturación")

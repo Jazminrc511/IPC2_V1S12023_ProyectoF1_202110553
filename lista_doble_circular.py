@@ -64,42 +64,51 @@ class listaDobleCircular:
                     break
 
 
-    def eliminar(self, registro):
-        if self.cabeza is None:
-            print("La lista está vacía")
-            return
+    def eliminar(self, titulo):
+        actual = self.cabeza
+        anterior = None
+        no_encontrado = False
         
-        nodo_actual = self.cabeza
-        nodo_anterior = None
-        encontrado = False
-        
-        while True:
-            if nodo_actual.registro == registro:
-                # Caso especial: solo hay un nodo en la lista
-                if nodo_actual == self.cabeza and nodo_actual.siguiente == self.cabeza:
-                    self.cabeza = None
-                    break
+        while actual and actual.registro.titulo != titulo:
+            anterior = actual
+            actual = actual.siguiente
+            
+            if actual == self.cabeza:
+                no_encontrado = True
+                print("No encontrado")
+                break
 
-                # Caso especial: el nodo a eliminar es la cabeza de la lista
-                if nodo_actual == self.cabeza:
-                    ultimo = self.cabeza.anterior
-                    self.cabeza = self.cabeza.siguiente
-                    ultimo.siguiente = self.cabeza
-                    self.cabeza.anterior = ultimo
-                else:
-                    nodo_anterior.siguiente = nodo_actual.siguiente
-                    nodo_actual.siguiente.anterior = nodo_anterior
-                
-                encontrado = True
-                break
-            
-            nodo_anterior = nodo_actual
-            nodo_actual = nodo_actual.siguiente
-            
-            if nodo_actual == self.cabeza:
-                break
+        if not no_encontrado:
+            if anterior is not None:
+                anterior.siguiente = actual.siguiente
+                actual.siguiente = None
+            else:
+                while actual.siguiente != self.cabeza:
+                    actual = actual.siguiente
+                actual.siguiente = self.cabeza.siguiente
+                self.cabeza = self.cabeza.siguiente
+    """
+    def eliminar(self, registro):
+        actual = self.primero
+        anterior = None
+        no_encontrado = False
         
-        if encontrado:
-            print("Nodo eliminado correctamente")
-        else:
-            print("Nodo no encontrado en la lista")
+        while actual and actual.receta.colegiado != registro and actual.receta.fecha_cita != fecha_cita and actual.receta.hora_cita != hora_cita:
+            anterior = actual
+            actual = actual.siguiente
+            
+            if actual == self.primero:
+                no_encontrado = True
+                print("No encontrado")
+                break
+
+        if not no_encontrado:
+            if anterior is not None:
+                anterior.siguiente = actual.siguiente
+                actual.siguiente = None
+            else:
+                while actual.siguiente != self.primero:
+                    actual = actual.siguiente
+                actual.siguiente = self.primero.siguiente
+                self.primero = self.primero.siguiente
+    """

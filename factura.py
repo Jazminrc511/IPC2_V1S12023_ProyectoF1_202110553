@@ -24,7 +24,7 @@ class Factura:
         print("Nombre: ", self.nombre)
         print("NIT: ", self.nit)
         print("Dirección: ", self.direccion)
-        print("Total a pagar: ",self.total)
+        print("Total a pagar: Q",self.total)
         print("--------------------------------------------------------------------------------------")
 
     def imprimirClientes(self):
@@ -40,6 +40,6 @@ class Factura:
         #print("Nombre: ", self.nombre)
         #print("NIT: ", self.nit)
         #print("Dirección: ", self.direccion)
-        print("Total a pagar: ",self.total)
+        print("Total a pagar: Q",self.total)
         print("--------------------------------------------------------------------------------------")
         
