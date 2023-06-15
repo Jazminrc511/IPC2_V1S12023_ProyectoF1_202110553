@@ -1,5 +1,5 @@
 from nodo import Nodo
-
+import xml.etree.ElementTree as ET
 class listaDobleCircular:
     def __init__(self):
         self.cabeza = None
@@ -87,6 +87,67 @@ class listaDobleCircular:
                     actual = actual.siguiente
                 actual.siguiente = self.cabeza.siguiente
                 self.cabeza = self.cabeza.siguiente
+    def modificar(self, name):
+        actual = self.cabeza
+        while actual != None and actual.registro.titulo != name:
+            actual = actual.siguiente
+        print("1. Genero")
+        print("2. Título")
+        print("3. Director")
+        print("4. Año")
+        print("5. Fecha")
+        print("6. Hora")
+        op = input("Que desea modificar: ")
+        if op =="1":
+            genero = input("Nuevo género: ")
+            if actual != None:    
+                actual.registro.nombre = genero
+
+        elif op =="2":
+            titulo = input("Nuevo título: ")
+            if actual != None:    
+                actual.registro.titulo = titulo
+        elif op =="3":
+            director = input("Nuevo director: ")
+            if actual != None:    
+                actual.registro.director = director
+        elif op =="4":
+            anio = input("Nuevo Año:")
+            if actual != None:    
+                actual.registro.anio = anio
+        elif op =="5":
+            fecha = input("Nueva fecha: ")
+            if actual != None:    
+                actual.registro.fecha = fecha
+        elif op =="6":
+            hora = input("Nueva hora: ")
+            if actual != None:    
+                actual.registro.hora = hora
+        else:
+            print("Opción inválida")
+            return
+        tree = ET.parse('categorias.xml')
+        root = tree.getroot()
+
+        for categoria in root.findall('categoria'):
+            for pelicula in categoria.findall('peliculas/pelicula'):
+                titulo_element = pelicula.find('titulo')
+                if titulo_element.text == name:
+                    if op == "1":
+                        titulo_element.text = genero
+                    elif op == "2":
+                        pelicula.find('titulo').text = titulo
+                    elif op == "3":
+                        pelicula.find('director').text = director
+                    elif op == "4":
+                        pelicula.find('anio').text = anio
+                    elif op == "5":
+                        pelicula.find('fecha').text = fecha
+                    elif op == "6":
+                        pelicula.find('hora').text = hora
+        tree.write('categorias.xml', encoding="utf-8")
+
+        print("Los datos de la película han sido actualizados correctamente")
     """
     def eliminar(self, registro):
         actual = self.primero

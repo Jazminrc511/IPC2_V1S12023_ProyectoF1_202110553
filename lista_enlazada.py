@@ -1,4 +1,5 @@
 #La lista enlazada sirve para registrar usuarios
+import xml.etree.ElementTree as ET
 from nodo import Nodo
 class Lista_enlazada:
     def __init__(self):
@@ -49,3 +50,86 @@ class Lista_enlazada:
         elif actual:
             anterior.siguiente = actual.siguiente
             actual.siguiente = None
+
+    def modificar(self, name):
+        actual = self.primero
+        while actual != None and actual.registro.nombre != name:
+            actual = actual.siguiente
+
+        #if actual is None:
+            #print("No se encontró el usuario con el nombre especificado")
+            #return
+        print("1. Nombre")
+        print("2. Apellido")
+        print("3. Teléfono")
+        print("4. Correo")
+        print("5. Contraseña")
+        op = input("Que desea modificar: ")
+        if op =="1":
+            nombre = input("Nuevo nombre:")
+            if actual != None:    
+                actual.registro.nombre = nombre
+
+        elif op =="2":
+            apellido = input("Nuevo apellido:")
+            if actual != None:    
+                actual.registro.apellido = apellido
+        elif op =="3":
+            tel = input("Nuevo teléfono:")
+            if actual != None:    
+                actual.registro.tel = tel
+        elif op =="4":
+            correo = input("Nuevo correo:")
+            if actual != None:    
+                actual.registro.correo = correo
+        elif op =="5":
+            contra = input("Nuevo contraseña:")
+            if actual != None:    
+                actual.registro.contra = contra
+        else:
+            print("Opción inválida")
+            return
+        tree = ET.parse('gestionarUsuarios.xml')
+        root = tree.getroot()
+
+        for usuario in root.findall('usuario'):
+            nombre_element = usuario.find('nombre')
+            if nombre_element.text == name:
+                if op == "1":
+                    nombre_element.text = nombre
+                elif op == "2":
+                    usuario.find('apellido').text = apellido
+                elif op == "3":
+                    usuario.find('telefono').text = tel
+                elif op == "4":
+                    usuario.find('correo').text = correo
+                elif op == "5":
+                    usuario.find('contrasena').text = contra
+
+        # Guardar los cambios en el archivo XML
+        tree.write('gestionarUsuarios.xml', encoding="utf-8")
+
+        print("El usuario ha sido modificado correctamente")          
+
+    def buscarAdministrador(self, correo, contra):
+        actual = self.primero
+
+        while actual is not None:
+            if actual.registro.correo == correo and actual.registro.contra == contra and actual.registro.rol == "administrador":
+                return actual.registro
+
+            actual = actual.siguiente
+
+        return None
+    
+    def buscarCliente(self, correo, contra):
+
+        actual = self.primero
+
+        while actual is not None:
+            if actual.registro.correo == correo and actual.registro.contra == contra and actual.registro.rol == "cliente":
+                return actual.registro
+
+            actual = actual.siguiente
+
+        return None
