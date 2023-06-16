@@ -10,8 +10,6 @@ class Lectura:
         self.Lista_en = Lista_enlazada()
         self.listaDoble = lista_doble()
         self.circular = listaDobleCircular()
-        self.lecturaCines()
-        self.editarCine()
         """
         self.lecturaUsuarios()
         print("-------------------------------------------------------------------------")
@@ -41,10 +39,11 @@ class Lectura:
     def iniciarSesionClientes(self, usuario, contra):
         #usuario = input("Usuario: ")
         #contra = input("Contraseña: ")
-        self.Lista_en.buscarCliente(usuario, contra)
+        return self.Lista_en.buscarCliente(usuario, contra)
 
     def iniciarSesionAdmin(self, usuario, contra):
-        self.Lista_en.buscarAdministrador(usuario, contra)
+        return self.Lista_en.buscarAdministrador(usuario, contra)
+    
     def lecturaUsuarios(self):
         tree = ET.parse('gestionarUsuarios.xml')
         root = tree.getroot()
@@ -258,10 +257,12 @@ class Lectura:
 
     def imprimirPeliculas(self):
         self.circular.Imprimir_solo_pelis()
-
+    def imprimirGenero(self):
+        genero = input("Género de la película que desea ver: ")
+        self.circular.buscarPorGenero(genero)
     def imprimirPeliculasDetalles(self):
         self.circular.Imprimir_LDC()
 
     def favs(self):
         self.circular.lasFavoritas()
-Lectura()
+#Lectura()

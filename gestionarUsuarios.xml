@@ -9,7 +9,7 @@
   </usuario>
   <usuario>
     <rol>administrador</rol>
-    <nombre>saul</nombre>
+    <nombre>Saul</nombre>
     <apellido>perez</apellido>
     <telefono>1562</telefono>
     <correo>saul@gmail.com</correo>
@@ -17,16 +17,8 @@
   </usuario>
   <usuario>
     <rol>administrador</rol>
-    <nombre>jack</nombre>
-    <apellido>martinez</apellido>
-    <telefono>jack@gmail.com</telefono>
-    <correo>jack@gmail.com</correo>
-    <contrasena>12</contrasena>
-  </usuario>
-  <usuario>
-    <rol>administrador</rol>
     <nombre>Jazmin</nombre>
-    <apellido>Cital&#225;n</apellido>
+    <apellido>Citalán</apellido>
     <telefono>59479135</telefono>
     <correo>jazmin@gmail.com</correo>
     <contrasena>arbol</contrasena>
@@ -47,4 +39,4 @@
     <correo>sebas@gmail.com</correo>
     <contrasena>print</contrasena>
   </usuario>
-</usuarios>
+<usuario><rol>cliente</rol><nombre>Carlos</nombre><apellido>Santizo</apellido><telefono>25315784</telefono><correo>carlos@gmail.com</correo><contrasena>compu</contrasena></usuario></usuarios>

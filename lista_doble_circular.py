@@ -21,6 +21,17 @@ class listaDobleCircular:
             ultimo.siguiente = nuevo_nodo
 
     
+    def buscarPorGenero(self, genero):
+        if self.cabeza is None:
+            print("La lista está vacía")
+        else:
+            nodo_actual = self.cabeza
+            while True:
+                if nodo_actual.registro.nombre == genero:
+                    print(f"\n- {nodo_actual.registro.titulo}")
+                nodo_actual = nodo_actual.siguiente
+                if nodo_actual == self.cabeza:
+                    break
     def Imprimir_LDC(self):
         if self.cabeza is None:
             print("La lista esta vacía")

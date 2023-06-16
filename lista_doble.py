@@ -53,6 +53,8 @@ class lista_doble:
     actual = self.primero
     while actual != None and actual.registro.asientos != asientos:
         actual = actual.siguiente
+    #print("\n¿Qué desea editar?")
+    print("\n")
     print("1. Nombre Cine")
     print("2. Numero de sala")
     print("3. Asiento")

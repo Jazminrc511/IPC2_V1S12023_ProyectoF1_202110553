@@ -37,17 +37,22 @@ class Menu:
         print("Bienvenido de nuevo, Inicia sesión aqui")
         usuario = input("Ingresa tu nombre de usuario: ")
         contrasena = input("Ingresa tu contraseña: ")
-        
-        if usuario == "administrador" and contrasena == "123":
+        resultado = self.lectu.iniciarSesionAdmin(usuario, contrasena)
+        if resultado is not None:
             print("Inicio sesión como administrador")
             self.menuAdmin()
-        elif usuario =="administrador":
-            self.menuAdmin()
-        elif usuario == "cliente":
-            self.menuClientes()
-        else:
-            print("Nombre de usuario o contraseña incorrectos")
-            self.iniciar_sesion()
+        else: 
+            resultado = self.lectu.iniciarSesionClientes(usuario, contrasena)
+            if resultado is not None:
+                print("Inicio sesión como Cliente")
+                self.menuClientes()
+            else:
+                if usuario == "administrador" and contrasena == "123":
+                    print("Inicio sesión como administrador")
+                    self.menuAdmin()
+                else:
+                    print("Nombre de usuario o contraseña incorrectos")
+                    self.iniciar_sesion()
 
 #Menús Listos
     def registrar(self):
@@ -82,7 +87,7 @@ class Menu:
 
     def menuClientes(self):
         print("\n--------------------------------------------------------------------------------------")
-        print("Menú Administrador")
+        print("______________Menú Cliente______________")
         print("1. Ver Listado de películas")
         print("2. Listado de películas favoritas")
         print("3. Comprar Boletos")
@@ -123,16 +128,19 @@ class Menu:
         print("Que desea realizar")
         print("1. Crear")
         print("2. Leer")
-        print("3. Modidicar")
+        print("3. Modificar")
         print("4. Eliminar")
         print("5. Regresar")
-        opcion = input("Selecciona una opción (1-4): ")
+        opcion = input("Selecciona una opción (1-5): ")
         if opcion == "1":
             #Lectura.agregarUsuarios(self)
             self.lectu.agregarUsuarios()
             self.gestionarUsuarios()
         elif opcion == "2":
             self.lectu.lecturaUsuarios()
+            self.gestionarUsuarios()
+        elif opcion =="3":
+            self.lectu.editarUsuario()
             self.gestionarUsuarios()
         elif opcion == "4":
             self.lectu.eliminarUsuario()
@@ -141,6 +149,7 @@ class Menu:
             self.menuAdmin()            
         else:
             print("Opción inválida. Por favor, selecciona una opción válida.")
+            self.gestionarUsuarios()
 
     def gestionarPeliculas(self):
         print("\n--------------------------------------------------------------------------------------")
@@ -148,7 +157,7 @@ class Menu:
         print("Que desea realizar")
         print("1. Crear")
         print("2. Leer")
-        print("3. Modidicar")
+        print("3. Modificar")
         print("4. Eliminar")
         print("5. Regresar")
         opcion = input("Selecciona una opción (1-5): ")
@@ -158,6 +167,9 @@ class Menu:
         elif opcion == "2":
             self.lectu.lecturaPeliculas()
             self.gestionarPeliculas()
+        elif opcion =="3":
+            self.lectu.editarPelis()
+            self.gestionarPeliculas()
         elif opcion == "4":
             self.lectu.eliminarPelicula()
             self.gestionarPeliculas()
@@ -165,6 +177,7 @@ class Menu:
             self.menuAdmin()            
         else:
             print("Opción inválida. Por favor, selecciona una opción válida.")
+            self.gestionarPeliculas()
 
     def gestionarSalas(self):
         print("\n--------------------------------------------------------------------------------------")
@@ -172,7 +185,7 @@ class Menu:
         print("Que desea realizar")
         print("1. Crear")
         print("2. Leer")
-        print("3. Modidicar")
+        print("3. Modificar")
         print("4. Eliminar")
         print("5. Regresar")
         opcion = input("Selecciona una opción (1-5): ")
@@ -182,11 +195,15 @@ class Menu:
         elif opcion == "2":
             self.lectu.lecturaCines()
             self.gestionarSalas()
+        elif opcion == "3":
+            self.lectu.editarCine()
+            self.gestionarSalas()
         elif opcion == "4":
             self.lectu.eliminarSalas()
             self.gestionarSalas()
         elif opcion == "5":
-            self.menuAdmin()            
+            self.menuAdmin()  
+
         else:
             print("Opción inválida. Por favor, selecciona una opción válida.")
             self.gestionarSalas()
@@ -204,18 +221,21 @@ class Menu:
         print("Nombre: ", self.nombre)
         print("NIT: ", self.nit)
         print("Dirección: ", self.direccion)
-        print("Total a pagar: ",self.total)
+        print("Total a pagar: Q",self.total)
         print("--------------------------------------------------------------------------------------")
 
     def verListadoPeliculas(self):
+        print("\n--------------------------------------------------------------------------------------")
         print("1. Ver listado de peliculas con detalles")
-        print("2. Ver solo pelicula con su género")
+        print("2. Ver peliculas por género")
         print("3. Regresar")
         opcion = input("Elige una opción: ")
         if opcion == "1":
             self.lectu.imprimirPeliculasDetalles()
+            self.verListadoPeliculas()
         elif opcion == "2":
-            self.lectu.imprimirPeliculas()
+            self.lectu.imprimirGenero()
+            self.verListadoPeliculas()
         elif opcion == "3":
             self.menuClientes()
         else:
@@ -223,21 +243,27 @@ class Menu:
             self.verListadoPeliculas()
 
     def menuImprimirPelisMain(self):
+        print("\n--------------------------------------------------------------------------------------")
         print("1. Ver listado de peliculas con detalles")
-        print("2. Ver solo el nombre de las peliculas con categoria")
+        print("2. Ver peliculas por categoria")
         print("3. regresar")
         opcion = input("Selecciona una opción: ")
         if opcion == "1":
             self.lectu.imprimirPeliculasDetalles()
             self.menuImprimirPelisMain()
         elif opcion == "2":
-            self.lectu.imprimirPeliculas()
+            self.lectu.imprimirGenero()
             self.menuImprimirPelisMain()
         elif opcion == "3":
             self.main()          
         else:
             print("Opción inválida. Por favor, selecciona una opción válida.")
             self.menuImprimirPelisMain()
+
+    def imprimirGenero(self):
+        self.lectu.imprimirPeliculasDetalles()
+        
+        self.lectu.imprimirGenero()
 
     def comprarBoletos(self):
         self.lectu.imprimirPeliculasDetalles()
@@ -256,7 +282,7 @@ class Menu:
         direccion = input("Dirección: ")
         factu = Factura(namePeli, fecha, hora, boletos, sala, asientos, name, nit, direccion)
         self.listaFacturas.append(factu)
-        print("Total a pagar: ", factu.total)
+        print("Total a pagar: Q", factu.total)
         print("--------------------------------------------------------------------------------------")
         print("Compra realizada con éxito")
         #self.verFacturas()
@@ -280,6 +306,7 @@ class Menu:
                 f.imprimirClientes()
 
     def menuEliminarFactura(self):
+        print("\n--------------------------------------------------------------------------------------")
         op = input("\nDesea eliminar una factura (s/n): ")
         if op =="s":
             self.Eliminar()
@@ -310,10 +337,11 @@ class Menu:
         #self.verFacturas()
 
     def menuFavoritas(self):
+        print("\n--------------------------------------------------------------------------------------")
         print("1. Ver lista de favoritas")
         print("2. Agregar peliculas favoritas")
 
-        op = input("Opción 1, 2 o 3")
+        op = input("Elige una opción: ")
         if op == "1":
             self.imprimirFavoritas()
             self.menuClientes()
