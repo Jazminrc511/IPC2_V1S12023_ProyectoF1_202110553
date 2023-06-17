@@ -6,6 +6,7 @@ class Peliculas:
         self.anio = anio
         self.fecha = fecha
         self.hora = hora
+        self.favoritas = []
     def imprimir(self):
     #print(self.codigo)
     #print(self.nombre)

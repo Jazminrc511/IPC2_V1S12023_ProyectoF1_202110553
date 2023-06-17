@@ -228,7 +228,8 @@ class Menu:
         print("\n--------------------------------------------------------------------------------------")
         print("1. Ver listado de peliculas con detalles")
         print("2. Ver peliculas por género")
-        print("3. Regresar")
+        print("3. Ver detalles por nombre de la película")
+        print("4. Regresar")
         opcion = input("Elige una opción: ")
         if opcion == "1":
             self.lectu.imprimirPeliculasDetalles()
@@ -236,7 +237,10 @@ class Menu:
         elif opcion == "2":
             self.lectu.imprimirGenero()
             self.verListadoPeliculas()
-        elif opcion == "3":
+        elif opcion =="3":
+            self.lectu.verDetalles()
+            self.verListadoPeliculas()
+        elif opcion == "4":
             self.menuClientes()
         else:
             print("Opción inválida. Por favor, selecciona una opción válida.")
@@ -343,10 +347,13 @@ class Menu:
 
         op = input("Elige una opción: ")
         if op == "1":
-            self.imprimirFavoritas()
+            self.lectu.Imprimirfavoritas()
+            #self.imprimirFavoritas()
             self.menuClientes()
         elif op == "2":
-            self.favoritas()
+            self.lectu.favs()
+            self.lectu.agregarFavoritas()
+            #self.favoritas()
             self.menuClientes()
         else:
             print("Opción invalida")
@@ -364,7 +371,7 @@ class Menu:
             print("\n--------------------------------------------------------------------------------------")
             print("Lista de películas favoritas:")
             for pelicula in self.listaFavoritas:
-                print(pelicula)
+                print(f"- {pelicula}\n")
         else:
             print("No hay películas favoritas en la lista.")
 

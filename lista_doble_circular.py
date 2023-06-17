@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 class listaDobleCircular:
     def __init__(self):
         self.cabeza = None
+        self.favoritas = []
 
     def add(self, registro):
         nuevo_nodo = Nodo(registro)
@@ -32,10 +33,22 @@ class listaDobleCircular:
                 nodo_actual = nodo_actual.siguiente
                 if nodo_actual == self.cabeza:
                     break
+    
+    def buscarPornombre(self, name):
+        if self.cabeza is None:
+            print("La lista está vacía")
+        else:
+            nodo_actual = self.cabeza
+            while True:
+                if nodo_actual.registro.titulo == name:
+                    print(f"\nGénero: {nodo_actual.registro.nombre} \n Titulo: {nodo_actual.registro.titulo}\n Director: {nodo_actual.registro.director}\n Año: {nodo_actual.registro.anio}\n Fecha: {nodo_actual.registro.fecha}\n Hora: {nodo_actual.registro.hora}")
+                nodo_actual = nodo_actual.siguiente
+                if nodo_actual == self.cabeza:
+                    break
+    
     def Imprimir_LDC(self):
         if self.cabeza is None:
             print("La lista esta vacía")
-        
         else:
             nodo_actual = self.cabeza
             #count = 1
@@ -98,6 +111,32 @@ class listaDobleCircular:
                     actual = actual.siguiente
                 actual.siguiente = self.cabeza.siguiente
                 self.cabeza = self.cabeza.siguiente
+    
+    def agregarPeliculaFavoritas(self, pelicula):
+        pelicula_encontrada = None
+        nodo_actual = self.cabeza
+        while True:
+            if nodo_actual.registro.titulo == pelicula:
+                pelicula_encontrada = nodo_actual.registro
+                break
+            nodo_actual = nodo_actual.siguiente
+            if nodo_actual == self.cabeza:
+                break
+        
+        if pelicula_encontrada is not None:
+            self.favoritas.append(pelicula_encontrada)
+            print(f"La película '{pelicula}' ha sido agregada a tu lista nativa de favoritas.")
+        else:
+            print(f"No se encontró la película '{pelicula}'.")
+
+    def imprimirListaNativa(self):
+        if len(self.favoritas) == 0:
+            print("Tu lista de peliculas favoritas está vacía.")
+        else:
+            print("Lista de películas favoritas:")
+            for pelicula in self.favoritas:
+                print(f"- {pelicula.titulo}\n")
+
     def modificar(self, name):
         actual = self.cabeza
         while actual != None and actual.registro.titulo != name:

@@ -39,4 +39,20 @@
     <correo>sebas@gmail.com</correo>
     <contrasena>print</contrasena>
   </usuario>
-<usuario><rol>cliente</rol><nombre>Carlos</nombre><apellido>Santizo</apellido><telefono>25315784</telefono><correo>carlos@gmail.com</correo><contrasena>compu</contrasena></usuario></usuarios>
+  <usuario>
+    <rol>cliente</rol>
+    <nombre>Carlos</nombre>
+    <apellido>Santizo</apellido>
+    <telefono>25315784</telefono>
+    <correo>carlos@gmail.com</correo>
+    <contrasena>compu</contrasena>
+  </usuario>
+  <usuario>
+    <rol>cliente</rol>
+    <nombre>Andrea</nombre>
+    <apellido>Rodriguez</apellido>
+    <telefono>52378946</telefono>
+    <correo>andrea@gmail.com</correo>
+    <contrasena>511</contrasena>
+  </usuario>
+</usuarios>

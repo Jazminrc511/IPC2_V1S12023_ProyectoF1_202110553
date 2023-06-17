@@ -21,4 +21,17 @@
             </sala>
         </salas>
     </cine>
-<cine><nombre>CineMark</nombre><salas><sala><numero>#USACIPC2_202110553_5</numero><asientos>25</asientos></sala></salas></cine><cine><nombre>CineMex</nombre><salas /></cine></cines>
+    <cine>
+        <nombre>CineMark</nombre>
+        <salas>
+            <sala>
+                <numero>#USACIPC2_202110553_5</numero>
+                <asientos>25</asientos>
+            </sala>
+        </salas>
+    </cine>
+    <cine>
+        <nombre>CineMex</nombre>
+        <salas />
+    </cine>
+</cines>

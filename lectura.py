@@ -10,7 +10,11 @@ class Lectura:
         self.Lista_en = Lista_enlazada()
         self.listaDoble = lista_doble()
         self.circular = listaDobleCircular()
+        
         """
+        self.lecturaPeliculas()
+        self.agregarFavoritas()
+        self.Imprimirfavoritas()
         self.lecturaUsuarios()
         print("-------------------------------------------------------------------------")
         self.lecturaCines()
@@ -25,11 +29,11 @@ class Lectura:
         #self.agregarUsuarios()
         """
     def editarCine(self):
-        asiento = input("Escriba el numero de asiento del cine que desea editar")
+        asiento = input("Escriba el numero de asiento del cine que desea editar: ")
         self.listaDoble.modificar(asiento)
         self.listaDoble.recorrer()
     def editarPelis(self):
-        name = input("Escribe el nombre de la película que deseas editar")
+        name = input("Escribe el nombre de la película que deseas editar: ")
         self.circular.modificar(name)
         self.circular.Imprimir_LDC()
     def editarUsuario(self):
@@ -265,4 +269,15 @@ class Lectura:
 
     def favs(self):
         self.circular.lasFavoritas()
+
+    def verDetalles(self):
+        nombre = input("Nombre de la pelicula: ")
+        self.circular.buscarPornombre(nombre)
+
+    def agregarFavoritas(self):
+        
+        nombre = input("Nombre de la pelicula que dese agregar: ")
+        self.circular.agregarPeliculaFavoritas(nombre)
+    def Imprimirfavoritas(self):
+        self.circular.imprimirListaNativa()
 #Lectura()

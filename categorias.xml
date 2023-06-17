@@ -57,8 +57,32 @@
                 <director>Louis Leterrier</director>
                 <anio>2023</anio>
                 <fecha>2023-06-13</fecha>
+                <hora>20:30</hora>
+            </pelicula>
+        </peliculas>
+    </categoria>
+    <categoria>
+        <nombre>Suspenso</nombre>
+        <peliculas>
+            <pelicula>
+                <titulo>No respires</titulo>
+                <director>Federico Álvarez</director>
+                <anio>2016</anio>
+                <fecha>2023-06-29</fecha>
+                <hora>18:30</hora>
+            </pelicula>
+        </peliculas>
+    </categoria>
+    <categoria>
+        <nombre>Infantil</nombre>
+        <peliculas>
+            <pelicula>
+                <titulo>Buscando a Nemo</titulo>
+                <director>Andrew Stanton</director>
+                <anio>2003</anio>
+                <fecha>2023-06-20</fecha>
                 <hora>12:00</hora>
             </pelicula>
         </peliculas>
     </categoria>
-<categoria><nombre>Suspenso</nombre><peliculas><pelicula><titulo>No respires</titulo><director>Federico Álvarez</director><anio>2016</anio><fecha>2023-06-29</fecha><hora>18:30</hora></pelicula></peliculas></categoria></categorias>
+</categorias>
